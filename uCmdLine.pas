@@ -1,13 +1,11 @@
 unit uCmdLine;
-
 {$mode objfpc}{$H+}
-
 interface
-
 uses
   Classes,
   SysUtils;
 
+// this class will be used for checking params, saving help and etc in near future
 type tConsoleApplication =
      class
      private
@@ -18,9 +16,18 @@ type tConsoleApplication =
 
 var Console : tConsoleApplication;
 
+// descriptions is not used in this moment, in near future will be used for help generation
+
+// test for boolean command line option like -h or -help
 function hasOptionB(const option_to_test: string; const option_to_test_long : string = ''; const desc : string = ''): boolean;
+
+// return integer param or 0 as default
 function getOptionI(const option_to_test: string; const option_to_test_long : string = ''; const desc : string = ''): Integer;
+
+// return string parameter
 function getOptionS(const option_to_test: string; const option_to_test_long : string = ''; const desc : string = ''): string;
+
+// return last parameter as string f.e.: aaa.exe -h aaa.log - this return aaa.log
 function getFinalS : String;
 
 implementation
